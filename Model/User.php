@@ -3,6 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+session_start();
 
 require_once __DIR__ . '/../core/Model.php';
 
@@ -21,7 +22,7 @@ class User extends Model {
     // Find a user by ID
     public static function find($id) {
         try {
-            $stmt = self::conn()->prepare("SELECT * FROM user WHERE id = :id LIMIT 1");
+            $stmt = self::conn()->prepare("SELECT * FROM user WHERE user_id = :id LIMIT 1");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
