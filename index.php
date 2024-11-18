@@ -26,6 +26,8 @@ Route::get('/', [DashboardController::class, "index"]);
 Route::get('/login', [LoginController::class, "index"]);
 Route::post('/login', [LoginController::class, "login"]);
 
+Route::get('/chart', [ChartController::class, "index"]);
+
 
 $requestUri = str_replace('/mental-health-management-system', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
