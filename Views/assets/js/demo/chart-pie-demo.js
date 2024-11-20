@@ -9,7 +9,7 @@ var myPieChart = new Chart(ctx, {
   data: {
     labels: ["Mental Illness", "Mental Problem", "Mental Disorder"],
     datasets: [{
-      data: [55, 30, 15],
+      data: [1, 2, 3],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
       hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -32,4 +32,30 @@ var myPieChart = new Chart(ctx, {
     },
     cutoutPercentage: 80,
   },
+});
+
+var demographicChart = document.getElementById("demographicChart");
+var dgchart = new Chart(demographicChart, {
+  type: 'bar',
+  data: {
+    labels: [
+      'Men',
+      'Women',
+      'Under 18 yeard old'
+    ],
+    datasets: [{
+      label: ['# of Men'],
+      data: [12, 19, 3],
+      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+      borderWidth: 1,
+      borderColor: "rgba(78, 115, 223, 1)",
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
 });
