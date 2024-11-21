@@ -33,13 +33,13 @@ class CaseController extends Controller {
             $process = CaseModel::insert();
 
             if ($process) {
-                echo "Client Registered Successfully";
+                $_SESSION["case_insertion"] = "You successfully inserted a case";
+                $_SESSION["statusColor"] = "bg-success";
+                header("Location: " . $_SERVER['HTTP_REFERER']);
+                exit;
             } else {
-                print_r($process);
-                error_log("Error during client registration.");
-                echo "Error registering client. Please try again later.";
-
-                echo $_SESSION["lastID"];
+                $_SESSION["statusColor"] = "bg-danger";
+                $_SESSION["case_insertion"] = "Error registering case. Please try again later.";
             }
         }
     }

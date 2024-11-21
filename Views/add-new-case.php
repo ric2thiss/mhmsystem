@@ -51,6 +51,16 @@
                                     <div class="p-lg-2 p-xl-5">
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Case Information</h1>
+                                            <!-- Message -->
+                                            <p class="<?php echo isset($_SESSION["statusColor"]) ? $_SESSION["statusColor"] : ''; ?> text-white">
+                                                <?php
+                                                if (isset($_SESSION["case_insertion"]) && !empty($_SESSION["case_insertion"])) {
+                                                    echo $_SESSION["case_insertion"];
+                                                    // Clear the session message after displaying it
+                                                    unset($_SESSION["case_insertion"]);
+                                                }
+                                                ?>
+                                            </p>
                                         </div>
                                         <form class="user" method="POST" action="./case">
                                             <label for="">Client Details</label>
@@ -140,7 +150,6 @@
                                             </div>
 
                                             <!-- Submit Button -->
-                                             <?php echo $_SESSION["lastID"] ?>
                                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                                 <?= ($_SESSION["role_name"] !== "Administrator" && $_SESSION["role_name"] !== "Case Manager") ? "Request Add Case" : "Add Case" ?>
                                             </button>
