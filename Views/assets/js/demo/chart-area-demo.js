@@ -87,7 +87,7 @@ produce_data_chart().then(data => {
         pointHoverBorderColor: "rgba(78, 115, 223, 1)",
         pointHitRadius: 10,
         pointBorderWidth: 2,
-        data: data,  // Now data is populated
+        data: data, 
       }],
     },
     options: {

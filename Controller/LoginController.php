@@ -36,6 +36,7 @@ class LoginController extends Controller {
             $msg = ["status" => "failed", "message" => "Incorrect password!"];
             return $this->render('login', ["res" => $msg]);
         }
+        $_SESSION["role_name"] = $user["role_name"];
         $_SESSION["user_id"] = $user["user_id"];
         // $_SESSION["user"] = ["user_id" => $user["user_id"], "user_email" => $user["email"], "name"=>$user["first_name"] ." " . $user["last_name"]];
     

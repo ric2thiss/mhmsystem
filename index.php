@@ -21,12 +21,14 @@ spl_autoload_register(function ($class) {
 });
 
 session_start();
-// Define routes
+// Web routes
 Route::get('/', [DashboardController::class, "index"]);
 Route::get('/login', [LoginController::class, "index"]);
 Route::post('/login', [LoginController::class, "login"]);
 
 Route::get('/chart', [ChartController::class, "index"]);
+Route::get('/case', [CaseController::class, "index"]);
+Route::post('/case', [CaseController::class, "register"]);
 
 
 // Api Route

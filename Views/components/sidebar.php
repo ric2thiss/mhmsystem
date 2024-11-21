@@ -1,7 +1,7 @@
 <?php
     function sidebar($current){
         $dashboardActive = $current === "dashboard" ? "active" : "";
-        // $dashboardActive = $current === "dashboard" ? "active" : "";
+        $CaseOperationActive = $current === "addcase" ? "active" : "";
         // $dashboardActive = $current === "dashboard" ? "active" : "";
         // $dashboardActive = $current === "dashboard" ? "active" : "";
         // $dashboardActive = $current === "dashboard" ? "active" : "";
@@ -32,7 +32,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item <?=$dashboardActive?>">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="./">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -46,8 +46,8 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            <li class="nav-item <?=$CaseOperationActive?>">
+                <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <!-- <i class="fas fa-fw fa-cog"></i> for settings -->
                     <i class="fas fa-fw fa-folder"></i>

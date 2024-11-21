@@ -35,9 +35,10 @@ class User extends Model {
     // Find a user by email
     public static function findUserByEmail($email) {
         try {
-            $stmt = self::conn()->prepare(" SELECT u.*, a.*
+            $stmt = self::conn()->prepare(" SELECT u.*, a.*, r.*
                                             FROM user u
                                             INNER JOIN account a ON a.user_id = u.user_id
+                                            INNER JOIN role r ON r.role_id = u.role_id
                                             WHERE u.email = :email
                                             LIMIT 1
                                             ");

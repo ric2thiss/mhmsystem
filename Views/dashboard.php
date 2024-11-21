@@ -19,207 +19,8 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userData["first_name"]?> <?=$userData["last_name"]?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="Views/assets/img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
+                <?php require('components/top-navbar.php') ?>
+                <?=topNavbar($userData["first_name"], $userData["last_name"])?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -423,8 +224,8 @@
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Case ID</th>
-                                                    <th>Case Title</th>
+                                                    <th>Barangay Name</th>
+                                                    <th>Case No.</th>
                                                     <th>Action</th>
                                                     <!-- <th>Barangay</th>
                                                     <th>Status</th>
@@ -438,9 +239,14 @@
                                                 <?php foreach($tbDatas as $tbData): ?>
                                                     <tr>
                                                         <td><?=$tbData["barangay_name"]?></td>
-                                                        <td><?=$tbData["case_count"]?></td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-primary" id="brgymodal" data-toggle="brgymodal">Open</button>
+                                                        <td style="width: 20%;"><?=$tbData["case_count"]?></td>
+                                                        <td style="width: 20%;">
+                                                            <button type="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#open_barangay" onclick="show_data(<?php echo $tbData['barangay_id']?>)">
+                                                                Open
+                                                            </button>   
+                                                            <a type="button" href="./case?addcase=<?=$tbData["barangay_name"]?>" class="btn btn-primary">
+                                                                Add
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach ?>
@@ -452,7 +258,7 @@
                         </div>
 
 
-                         <!-- Pie Chart -->
+                         <!-- Bar graph -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
@@ -670,60 +476,77 @@
     </a>
 
     <!-- Modal for Each Opened Barangay -->
-    
+    <!-- Modal -->
+    <div class="modal fade" id="open_barangay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body" id="modal_body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
 
 
 
     <script>
-        // fetch('http://localhost/mental-health-management-system/api/datatable')
-        // .then(res => {
-        //     if (!res.ok) {
-        //         throw new Error(`HTTP error! status: ${res.status}`);
-        //     }
 
-        //     return res.text().then(text => {
-        //         try {
-        //             return text ? JSON.parse(text) : {};  // Parse the text as JSON if it's not empty
-        //         } catch (e) {
-        //             throw new Error('Invalid JSON response');
-        //         }
-        //     });
-        // })
-        // .then(datas => {
-        //     for (let data of datas) {
-        //         console.log(data);
+        async function show_data(id) {
+            console.log(id)
+            try {
+            const response = await fetch(`http://localhost/mental-health-management-system/api/barangay?id=${id}`);
 
-        //         // Create a new table row
-        //         let tr = document.createElement('tr');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
 
-        //         // Create and populate the first cell
-        //         let td1 = document.createElement('td');
-        //         td1.textContent = data.barangay_name;
+            const data = await response.json();
 
-        //         // Create and populate the second cell
-        //         let td2 = document.createElement('td');
-        //         td2.textContent = data.case_count;
+            // Clear existing modal content before appending new data
+            const modalBody = document.querySelector("#modal_body");
+            modalBody.innerHTML = ''; // This removes all existing children of the modal body
 
-        //         // Append cells to the row
-        //         tr.appendChild(td1);
-        //         tr.appendChild(td2);
+            // Set the title
+            document.querySelector("#title").textContent = data.length > 0 ? data[0].barangay_name : 'N/A';
 
-        //         // Append the row to the tbody
-        //         let tbody = document.getElementById("tbody");
-        //         tbody.appendChild(tr);
-        //     }
-        // })
+            // Append new data to the modal body
+            for (let d of data) {
+                const p = document.createElement('p');
+                const p2 = document.createElement('p');
+                p.textContent = d.purok_name || 'No Purok Name';
+                p2.textContent = `Case Count : ${d.case_count}` || 'No Case';
+                modalBody.appendChild(p);
+                modalBody.appendChild(p2);
+            }
+        } catch (error) {
+            console.error('Error fetching barangay data:', error);
+            // Display error message to the user if needed
+            document.querySelector("#errorMessage").textContent = "Failed to load data.";
+        }
 
-        // .catch(error => {
-        //     console.error('There was an error!', error); // Handle network or parsing errors
-        // });
+        }
+        
+
 
     </script>
     <!-- Logout Modal-->
     <?php include 'components/logout.modal.html';?>
 
     <?php include 'components/scripts.html';?>
+
+
+    
 
 </body>
 
