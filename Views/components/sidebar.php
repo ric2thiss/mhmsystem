@@ -2,7 +2,7 @@
     function sidebar($current){
         $dashboardActive = $current === "dashboard" ? "active" : "";
         $CaseOperationActive = $current === "addcase" ? "active" : "";
-        // $dashboardActive = $current === "dashboard" ? "active" : "";
+        $ResourceOperationActive = $current === "addresource" ? "active" : "";
         // $dashboardActive = $current === "dashboard" ? "active" : "";
         // $dashboardActive = $current === "dashboard" ? "active" : "";
         // $dashboardActive = $current === "dashboard" ? "active" : "";
@@ -58,13 +58,13 @@
                         <!-- <h6 class="collapse-header">Data Entry:</h6> -->
                         <a class="collapse-item" href="./case?action=select-barangay">Insert Case</a>
                         <a class="collapse-item" href="./case?action=view-cases">View Case</a>
-                        <a class="collapse-item" href="./case">Closed Case</a>
+                        <a class="collapse-item" href="./case?action=pendings">Pending Case</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?=$ResourceOperationActive?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
@@ -74,7 +74,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Insert Resource</a>
+                        <a class="collapse-item" href="./resource?action=insert-resource">Insert Resource</a>
                         <a class="collapse-item" href="utilities-border.html">Resource Utilization</a>
                         <a class="collapse-item" href="utilities-animation.html">Resource Lists</a>
                         <!-- <a class="collapse-item" href="utilities-other.html">Other</a> -->

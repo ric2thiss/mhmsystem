@@ -30,6 +30,8 @@ Route::get('/chart', [ChartController::class, "index"]);
 Route::get('/case', [CaseController::class, "index"]);
 Route::post('/case', [CaseController::class, "register"]);
 
+Route::get('/resource',[ResourceController::class, "index"]);
+
 
 // Api Route
 Route::get('/api/case', [ApiController::class, "index"]);
