@@ -48,6 +48,45 @@ class CaseModel extends Model {
             return false;
         }
     }
+    public static function get() {
+        try {
+            $stmt = self::conn()->prepare("SELECT 
+                                                m.case_id,
+                                                m.case_title, 
+                                                m.case_description, 
+                                                m.status,
+                                                c.client_fname, 
+                                                c.client_lname, 
+                                                c.client_address, 
+                                                c.gender, 
+                                                c.age,
+                                                b.barangay_name, 
+                                                p.purok_name, 
+                                                u.first_name, 
+                                                u.last_name, 
+                                                r.role_name,
+                                                cc.case_category_name, 
+                                                cc.case_category_description, 
+                                                cs.name AS case_severity
+                                           FROM mental_health_case m
+                                           LEFT JOIN client c ON m.client_id = c.client_id
+                                           LEFT JOIN barangay b ON m.barangay_id = b.barangay_id
+                                           LEFT JOIN purok p ON m.purok_id = p.purok_id
+                                           LEFT JOIN user u ON m.user_id = u.user_id
+                                           LEFT JOIN role r ON u.role_id = r.role_id
+                                           LEFT JOIN case_category cc ON m.case_category_id = cc.case_category_id
+                                           LEFT JOIN case_severity cs ON m.case_severity_id = cs.case_severity_id
+                                           ORDER BY m.case_id DESC
+                                           ");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return [];
+        }
+    }
+    
+    
     
     
     

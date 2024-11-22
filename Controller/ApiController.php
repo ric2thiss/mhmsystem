@@ -16,12 +16,17 @@ class ApiController extends Controller {
             header('Content-Type: application/json');
             echo json_encode($data);
         }else if($request && isset($_SESSION["user_id"])){
-            // /category?
-            if($request === "category" ){
+            //Get all category 
+            //  DIR/category
+            if($request === "category" && empty($_GET["barangay_id"])){
                 $data = ApiModel::case_category_pie_chart();
                 header('Content-Type: application/json');
                 echo json_encode($data);
-            } else if ($request === "barangay" && isset($_GET["id"]) && $_GET["id"] != null) {
+            }else if($request === "category" && isset($_GET["barangay_id"])){
+                $data = ApiModel::barangay_case_category_pie_chart($_GET["barangay_id"]);
+                header('Content-Type: application/json');
+                echo json_encode($data);
+            }else if ($request === "barangay" && isset($_GET["id"]) && $_GET["id"] != null) {
                 // barangay?id={req}
                 $data = ApiModel::get_case_barangay_data($_GET["id"]);
                 header('Content-Type: application/json');
@@ -42,7 +47,26 @@ class ApiController extends Controller {
                 }
 
                 echo json_encode(["status"=>"Success", "data"=>$data]);
-            }else{
+
+            }else if($request === "demographics" && empty($_GET["barangay_id"])){
+                $data = ApiModel::get_demographic();
+                header('Content-Type: application/json');
+                echo json_encode($data);
+            }else if($request === "demographics" && isset($_GET["barangay_id"])){
+                $data = ApiModel::get_specific_demographic($_GET["barangay_id"]);
+                header('Content-Type: application/json');
+                echo json_encode($data);
+
+            }else if($request === "chart" && isset($_GET["barangay_id"]) && $_GET["barangay_id"]){
+                // api/chart?barangay_id={request}
+                $data = ApiModel::get_case_of_specific_barangay($_GET["barangay_id"]);
+                header('Content-Type: application/json');
+                if(empty($data)){
+                    echo json_encode(["message" => "Something went wrong Request: $request", "status"=>"failed"]);
+                }
+                echo json_encode($data);
+            }
+            else{
                 http_response_code(400);
                 echo json_encode(["message" => "Invalid request", "status" => "error"]);
             }

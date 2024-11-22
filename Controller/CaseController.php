@@ -5,19 +5,30 @@ require_once __DIR__ . '/../Model/User.php';
 require_once __DIR__ . '/../Model/BarangayModel.php';
 require_once __DIR__ . '/../Model/CaseCategoryModel.php';
 require_once __DIR__ . '/../Model/CaseModel.php';
+require_once __DIR__ . '/../Model/ApiModel.php';
 
 class CaseController extends Controller {
     public function index() {
-        if(empty($_GET["addcase"]) || !isset($_GET["addcase"])){
-            return http_response_code(404);
-        };
-        $title = ["title" => "Add New Case -" . $_GET["addcase"]];
+        if (empty($_GET["addcase"]) || !isset($_GET["addcase"])) {
+            if (isset($_GET["action"]) && $_GET["action"] === "select-barangay") {
+                $userData = User::find($_SESSION["user_id"]);
+                $tbDatas = ApiModel::case_data_table_all();
+                return $this->render("select-barangay", ["userData" => $userData, "tbDatas" => $tbDatas]);
+            } else if (isset($_GET["action"]) && $_GET["action"] === "view-cases") {
+                $userData = User::find($_SESSION["user_id"]);
+                $caseDatas = CaseModel::get();
+                return $this->render("view-cases", ["userData" => $userData, "caseDatas" => $caseDatas, "title" => ["title" => "View Cases"]]);
+            }
+        }
+    
+        $title = ["title" => "Add New Case -" . ($_GET["addcase"] ?? '')];
         $barangay = BarangayModel::all();
         $case_category = CaseCategoryModel::all();
-        $case_severity = CaseCategoryModel::show_serverity_category();
+        $case_severity = CaseCategoryModel::show_severity_category(); // Corrected typo in function name
         $userData = User::find($_SESSION["user_id"]);
-        return $this->render("add-new-case",["userData" => $userData, "title" => $title, "barangays"=>$barangay, "categories" =>$case_category, "case_severities"=>$case_severity]);
+        return $this->render("add-new-case", ["userData" => $userData, "title" => $title, "barangays" => $barangay, "categories" => $case_category, "case_severities" => $case_severity]);
     }
+    
     public function register() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Validate each required field individually

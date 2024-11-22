@@ -14,7 +14,7 @@ class CaseCategoryModel extends Model{
         }
     }
 
-    public static function show_serverity_category(){
+    public static function show_severity_category(){
         try{
             $stmt = self::conn()->query("SELECT * FROM case_severity");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

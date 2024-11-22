@@ -51,6 +51,7 @@
                                     <div class="p-lg-2 p-xl-5">
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Case Information</h1>
+                                            
                                             <!-- Message -->
                                             <p class="<?php echo isset($_SESSION["statusColor"]) ? $_SESSION["statusColor"] : ''; ?> text-white">
                                                 <?php
@@ -64,6 +65,7 @@
                                         </div>
                                         <form class="user" method="POST" action="./case">
                                             <label for="">Client Details</label>
+                                            <hr>
 
                                             <!-- First name and Last name -->
                                             <div class="form-group row">
@@ -76,6 +78,7 @@
                                                     <input type="text" name="last_name" class="form-control form-control-user" id="last_name" placeholder="Last Name" required>
                                                 </div>
                                             </div>
+                                            
 
                                             <!-- Address -->
                                             <div class="form-group">
@@ -113,8 +116,9 @@
                                             </div>
 
                                             <!-- Barangay, Purok, Case Category, and Severity -->
-                                            <div class="form-group row m-2">
-                                                <div class="mr-2">
+                                            <div class="form-group row">
+                                                <!-- Barangay -->
+                                                <div class="col-sm-6">
                                                     <label for="barangay" class="mr-2">Barangay</label>
                                                     <select name="barangay" id="barangay" class="form-control" required>
                                                         <option value="" selected disabled>Select Barangay</option>
@@ -123,13 +127,16 @@
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
-                                                <div class="mr-2">
+                                                <!-- Purok -->
+                                                <div class="col-sm-6">
                                                     <label for="purok" class="mr-2">Purok</label>
                                                     <select name="purok" id="purok" class="form-control" required>
                                                         <option value="" selected disabled>Select Purok</option>
                                                     </select>
                                                 </div>
-                                                <div class="mr-2">
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-6">
                                                     <label for="case_category" class="mr-2">Case Category</label>
                                                     <select name="case_category" id="category" class="form-control" required>
                                                         <option value="" selected disabled>Select Case Category</option>
@@ -138,7 +145,7 @@
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
-                                                <div class="mr-2">
+                                                <div class="col-sm-6">
                                                     <label for="case_severity" class="mr-2">Case Severity</label>
                                                     <select name="case_severity" id="case_severity" class="form-control" required>
                                                         <option value="" selected disabled>Select Case Severity</option>
@@ -148,6 +155,8 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                                
+                                        
 
                                             <!-- Submit Button -->
                                             <button type="submit" class="btn btn-primary btn-user btn-block">

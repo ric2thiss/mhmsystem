@@ -56,9 +56,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Data Entry:</h6> -->
-                        <a class="collapse-item" href="case/add">Insert Case</a>
-                        <a class="collapse-item" href="case/view">View Case</a>
-                        <a class="collapse-item" href="case/closed">Closed Case</a>
+                        <a class="collapse-item" href="./case?action=select-barangay">Insert Case</a>
+                        <a class="collapse-item" href="./case?action=view-cases">View Case</a>
+                        <a class="collapse-item" href="./case">Closed Case</a>
                     </div>
                 </div>
             </li>

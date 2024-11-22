@@ -26,6 +26,134 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
+// Global variable to store the chart instance
+let myLineChart;
+
+function fetchChart(id) {
+  return fetch(`http://localhost/mental-health-management-system/api/chart?barangay_id=${id}`)
+      .then(res => {
+          if (!res.ok) {
+              throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json(); // Assuming the response is JSON
+      })
+      .then(data => {
+          const arr = []
+          let barangay_name = '';
+          data.forEach(count =>{
+            arr.push(count.case_count)
+            barangay_name = count.barangay_name
+
+          })
+          console.log(data)
+          updateChart(arr, barangay_name); // Pass the fetched data to the updateChart function
+      })
+      .catch(error => {
+          console.error('There was an error!', error);
+      });
+}
+
+function updateChart(data, barangay_name) {
+  const ctx = document.getElementById("myAreaChart").getContext("2d");
+  if (myLineChart) {
+      myLineChart.destroy(); // Destroy the existing chart instance
+  }
+
+  const display_barangay_name = document.getElementById("title-header")
+  display_barangay_name.innerHTML = "Barangay " + barangay_name
+
+   
+
+  // Create a new chart with the fetched data
+  myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+              label: "Case",
+              lineTension: 0.3,
+              backgroundColor: "rgba(78, 115, 223, 0.05)",
+              borderColor: "rgba(78, 115, 223, 1)",
+              pointRadius: 3,
+              pointBackgroundColor: "rgba(78, 115, 223, 1)",
+              pointBorderColor: "rgba(78, 115, 223, 1)",
+              pointHoverRadius: 3,
+              pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+              pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+              pointHitRadius: 10,
+              pointBorderWidth: 2,
+              data: data, // Use the fetched data here
+          }],
+      },
+      options: {
+          maintainAspectRatio: false,
+          layout: {
+              padding: {
+                  left: 10,
+                  right: 25,
+                  top: 25,
+                  bottom: 0
+              }
+          },
+          scales: {
+              xAxes: [{
+                  time: {
+                      unit: 'date'
+                  },
+                  gridLines: {
+                      display: false,
+                      drawBorder: false
+                  },
+                  ticks: {
+                      maxTicksLimit: 7
+                  }
+              }],
+              yAxes: [{
+                  ticks: {
+                      maxTicksLimit: 5,
+                      padding: 10,
+                      callback: function(value, index, values) {
+                          return ' Case ' + number_format(value);
+                      }
+                  },
+                  gridLines: {
+                      color: "rgb(234, 236, 244)",
+                      zeroLineColor: "rgb(234, 236, 244)",
+                      drawBorder: false,
+                      borderDash: [2],
+                      zeroLineBorderDash: [2]
+                  }
+              }],
+          },
+          legend: {
+              display: false
+          },
+          tooltips: {
+              backgroundColor: "rgb(255,255,255)",
+              bodyFontColor: "#858796",
+              titleMarginBottom: 10,
+              titleFontColor: '#6e707e',
+              titleFontSize: 14,
+              borderColor: '#dddfeb',
+              borderWidth: 1,
+              xPadding: 15,
+              yPadding: 15,
+              displayColors: false,
+              intersect: false,
+              mode: 'index',
+              caretPadding: 10,
+              callbacks: {
+                  label: function(tooltipItem, chart) {
+                      var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                      return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+                  }
+              }
+          }
+      }
+  });
+}
+
+
 
 
 
