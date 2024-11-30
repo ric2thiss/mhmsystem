@@ -30,4 +30,20 @@ class BarangayModel extends Model{
             return [];
         }
     }
+
+    public static function find($barangay_name){
+        try{
+            $stmt = self::conn()->prepare("SELECT * FROM barangay WHERE barangay_name =:barangay_name");
+            $stmt->bindParam(':barangay_name', $barangay_name);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            error_log("Error fetching data: " . $e->getMessage());
+            return false;
+        }
+    }
+
+
+
+
 }

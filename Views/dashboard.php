@@ -1,7 +1,26 @@
 
 <?php include 'components/includes.css.php' ?>
 
+<style>
+    .lists {
+    max-height: 250px;
+    overflow-y: auto;
+    }
 
+    .lists::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .lists::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+    }
+
+    .lists::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+</style>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -122,15 +141,15 @@
 
                     <!-- Content Row -->
 
+                    <!-- City Chart Overview -->
                     <div class="row">
-
                         <!-- Area Chart -->
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4"  id="chart">
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary" id="title-header">City Case Overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary" id="title-header">Overall Case Overview</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -150,7 +169,183 @@
                                  
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        <canvas id="myAreaChartCity"></canvas>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- Doughnut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Overall Categories</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small" id="category-indicators">
+                                        <!-- <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Mental Illness 
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Mental Problem
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Mental Disorder
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Barangays Chart Overview -->
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4"  id="chart">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary" id="Month_Name">Barangay Cases</h6>
+                                    <div class="dropdown no-arrow mt-2">
+                                        <a class="dropdown-toggle   " href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <!-- <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> -->
+                                            <p class="text-gray-500">Select Month
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                                </svg>
+                                            </p>
+                                        </a>
+                                        <div class=" dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Months:</div>
+                                            
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('January'); fetch_demographic_chart('January');">January</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('February'); fetch_demographic_chart('February');">February</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('March'); fetch_demographic_chart('March'); ">March</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('April'); fetch_demographic_chart('April');">April</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('May'); fetch_demographic_chart('May');">May</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('June'); fetch_demographic_chart('June');">June</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('July'); fetch_demographic_chart('July');">July</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('August'); fetch_demographic_chart('August');">August</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('September'); fetch_demographic_chart('September');">September</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('October'); fetch_demographic_chart('October');">October</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('November'); fetch_demographic_chart('November');">November</button>
+                                            <button class="dropdown-item" onclick="update_barangay_cases_chart('December'); fetch_demographic_chart('December');">December</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                 
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChartBarangay"></canvas>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- Doughnut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Profile Demographic</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="demographicChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <!-- <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Mental Illness 
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Mental Problem
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Mental Disorder
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Purok Chart Overview -->
+                    <div class="row">
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4"  id="chart">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary" id="barangays_name">Purok Cases</h6>
+                                    <div class="dropdown no-arrow mt-2">
+                                        <a class="dropdown-toggle   " href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <!-- <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> -->
+                                            <p class="text-gray-500">Select Barangay
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                                </svg>
+                                            </p>
+                                        </a>
+                                        <div class=" dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <!-- Search Barangay -->
+                                            <div class="dropdown-header"><input type="text" placeholder="Search Barangay" class="searchInput"></div>
+                                            <div class="lists" id="lists">
+                                               
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                 
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChartPurok"></canvas>
                                     </div>
                                 </div>
                                 
@@ -182,7 +377,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
+                                        <canvas id="myPieCategoryChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
@@ -271,7 +466,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Demographics</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Demographics - Age</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -290,7 +485,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="demographicChart"></canvas>
+                                        <canvas id="ageDemoographiccChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <!-- <span class="mr-2">
@@ -511,7 +706,7 @@
         async function show_data(id) {
             console.log(id)
             try {
-            const response = await fetch(`http://localhost/mental-health-management-system/api/barangay?id=${id}`);
+            const response = await fetch(`/mental-health-management-system/api/barangay?id=${id}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -542,8 +737,34 @@
         }
 
         }
+        // console.log("START")
 
+        // // const url = "http://localhost/mental-health-management-system/api/cases?get=all&scope=barangay&lists=numberofcases"
+
+        // fetch("http://localhost/mental-health-management-system/api/cases?get=all&scope=barangay&lists=numberofcases")
+        // .then(res =>res.json())
+        // .then(datas => {
+        //     const {data} = datas;
+        //     // let arr = data.map((item) => item.case_count);
+
+        //     console.log(data)
+        // })
         
+        const lists = document.getElementById("lists");
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const res = await fetch("/mental-health-management-system/api/barangay?get=all");
+            const data = await res.json();
+            const {data: barangayData} = data;
+
+            // Limit to the first 10 items
+            barangayData.forEach(barangay => {
+                lists.innerHTML += `<button class="dropdown-item" onclick="get_purok_data_of_this_barangay(${barangay.barangay_id}, '${barangay.barangay_name}'); fetchChartCategory(${barangay.barangay_id});">${barangay.barangay_name}</button>`;
+            });
+        });
+
+    
+
 
 
     </script>

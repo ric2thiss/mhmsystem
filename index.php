@@ -34,8 +34,9 @@ Route::get('/resource',[ResourceController::class, "index"]);
 
 
 // Api Route
-Route::get('/api/case', [ApiController::class, "index"]);
-Route::get('/api/{request}', [ApiController::class, "show"]);
+// Route::get('/api/case', [ApiController::class, "index"]);
+// Route::get('/api/{request}', [ApiController::class, "show"]);
+Route::get('/api/{request}', [ApisController::class, "show"]);
 
 
 $requestUri = str_replace('/mental-health-management-system', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
