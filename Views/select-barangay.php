@@ -140,13 +140,16 @@
         async function show_data(id) {
             console.log(id)
             try {
-            const response = await fetch(`http://localhost/mental-health-management-system/api/barangay?id=${id}`);
+            const response = await fetch(`/mental-health-management-system/api/purok?get=purok&id=${id}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const data = await response.json();
+            const datas = await response.json();
+
+            const {data} = datas
+
 
             // Clear existing modal content before appending new data
             const modalBody = document.querySelector("#modal_body");

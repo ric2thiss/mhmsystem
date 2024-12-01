@@ -140,7 +140,6 @@
                     </div>
 
                     <!-- Content Row -->
-
                     <!-- City Chart Overview -->
                     <div class="row">
                         <!-- Area Chart -->
@@ -216,6 +215,44 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!--All Categories row line graph -->
+                    <div class="row">
+                        <!-- Area Chart -->
+                        <div class="col-xl-12 col-lg-9">
+                            <div class="card shadow mb-4"  id="chart">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary" id="title-header">Categories Chart</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Chart Action:</div>
+                                            <a class="dropdown-item" href="chart">All Charts</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                 
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myNewLineChartForCategories"></canvas>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- Doughnut Chart -->
+                        
                     </div>
 
                     <!-- Barangays Chart Overview -->
@@ -394,7 +431,6 @@
                             </div>
                         </div>
                     </div>
-
                    <!-- Content Row for Table -->
                     <div class="row">
                         <!-- Table -->
@@ -487,30 +523,19 @@
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="ageDemoographiccChart"></canvas>
                                     </div>
-                                    <div class="mt-4 text-center small">
-                                        <!-- <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Men 
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Women
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Under 18 years old
-                                        </span> -->
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                     <!-- Content Row -->
-                    <div class="row">
+                    <!-- <div class="row"> -->
 
                         <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
+                        <!-- <div class="col-lg-6 mb-4"> -->
 
                             <!-- Project Card Example -->
-                            <div class="card shadow mb-4">
+                            <!-- <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Outreach Projects</h6>
                                 </div>
@@ -546,7 +571,7 @@
                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- Color System -->
                             <!-- <div class="row">
@@ -616,12 +641,12 @@
                                 </div>
                             </div> -->
 
-                        </div>
+                        <!-- </div> -->
 
-                        <div class="col-lg-6 mb-4">
+                        <!-- <div class="col-lg-6 mb-4"> -->
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4">
+                            <!-- <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
                                 </div>
@@ -637,10 +662,10 @@
                                     <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
                                         unDraw &rarr;</a>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- Approach -->
-                            <div class="card shadow mb-4">
+                            <!-- <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
                                 </div>
@@ -651,10 +676,10 @@
                                     <p class="mb-0">Before working with this theme, you should become familiar with the
                                         Bootstrap framework, especially the utility classes.</p>
                                 </div>
-                            </div>
+                            </div> -->
 
-                        </div>
-                    </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
 
                 </div>
                 <!-- /.container-fluid -->
@@ -706,13 +731,15 @@
         async function show_data(id) {
             console.log(id)
             try {
-            const response = await fetch(`/mental-health-management-system/api/barangay?id=${id}`);
+            const response = await fetch(`/mental-health-management-system/api/purok?get=purok&id=${id}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const data = await response.json();
+            const datas = await response.json();
+
+            const {data} = datas
 
             // Clear existing modal content before appending new data
             const modalBody = document.querySelector("#modal_body");
@@ -731,10 +758,10 @@
                 modalBody.appendChild(p2);
             }
         } catch (error) {
-            console.error('Error fetching barangay data:', error);
-            // Display error message to the user if needed
-            document.querySelector("#errorMessage").textContent = "Failed to load data.";
-        }
+                console.error('Error fetching barangay data:', error);
+                // Display error message to the user if needed
+                document.querySelector("#errorMessage").textContent = "Failed to load data.";
+            }
 
         }
         // console.log("START")

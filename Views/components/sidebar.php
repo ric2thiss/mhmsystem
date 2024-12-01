@@ -58,7 +58,7 @@
                         <!-- <h6 class="collapse-header">Data Entry:</h6> -->
                         <a class="collapse-item" href="./case?action=select-barangay">Insert Case</a>
                         <a class="collapse-item" href="./case?action=view-cases">View Case</a>
-                        <a class="collapse-item" href="./case?action=pendings">Pending Case</a>
+                        <!-- <a class="collapse-item" href="./case?action=pendings">Pending Case</a> -->
                     </div>
                 </div>
             </li>

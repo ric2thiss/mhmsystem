@@ -209,7 +209,7 @@
 
         async function fetch_purok(id) {
             try {
-                const response = await fetch(`http://localhost/mental-health-management-system/api/purok?id=${id}`);
+                const response = await fetch(`/mental-health-management-system/api/purok?get-purok=purok&id=${id}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.statusText}`);
                 }

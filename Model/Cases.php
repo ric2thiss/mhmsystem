@@ -177,6 +177,54 @@ class Cases extends Model {
         }
     }
 
+    public static function get_all_categories_for_one_chart(){
+        try{
+            $sql = "WITH Months AS (
+                        SELECT 1 AS month_num, 'January' AS month_name
+                        UNION ALL SELECT 2, 'February'
+                        UNION ALL SELECT 3, 'March'
+                        UNION ALL SELECT 4, 'April'
+                        UNION ALL SELECT 5, 'May'
+                        UNION ALL SELECT 6, 'June'
+                        UNION ALL SELECT 7, 'July'
+                        UNION ALL SELECT 8, 'August'
+                        UNION ALL SELECT 9, 'September'
+                        UNION ALL SELECT 10, 'October'
+                        UNION ALL SELECT 11, 'November'
+                        UNION ALL SELECT 12, 'December'
+                    ),
+                    CategoryCounts AS (
+                        SELECT 
+                            MONTH(c.created_at) AS month_num,
+                            cc.case_category_name,
+                            COUNT(c.case_id) AS case_count
+                        FROM mental_health_case c
+                        RIGHT JOIN case_category cc 
+                            ON c.case_category_id = cc.case_category_id
+                        GROUP BY MONTH(c.created_at), cc.case_category_name
+                    )
+                    SELECT 
+                        m.month_name,
+                        cc.case_category_name,
+                        COALESCE(ccs.case_count, 0) AS case_count
+                    FROM Months m
+                    CROSS JOIN case_category cc
+                    LEFT JOIN CategoryCounts ccs 
+                        ON m.month_num = ccs.month_num
+                        AND cc.case_category_name = ccs.case_category_name
+                    
+                    ORDER BY m.month_num, cc.case_category_name;
+                    ";
+                $stmt = self::conn()->query($sql);
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
+
+
+
 
 
 

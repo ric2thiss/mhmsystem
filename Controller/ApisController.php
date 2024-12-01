@@ -50,6 +50,9 @@ class ApisController extends Controller {
         if($request === "age"){
             $this->handleRequestAge();
         }
+        if($request === "purok"){
+            $this->handleRequestPurok();
+        }
 
         // Handle invalid requests
         $this->sendError("Invalid request", 400);
@@ -142,6 +145,25 @@ class ApisController extends Controller {
     }
 
     /**
+     * Handle request for purok
+     */
+
+    private function handleRequestPurok(){
+        if (isset($_GET["get"]) && $_GET["get"] === "purok"){
+            // Case: Return all puroks
+            $data = ApiModel::get_case_barangay_data($_GET["id"]);
+            $this->sendResponse($data);
+            return;
+        }
+
+        if(isset($_GET["get-purok"]) && $_GET["get-purok"] === "purok"){
+            $data = BarangayModel::show($_GET["id"]);
+            $this->sendResponse($data);
+        }
+
+    }
+
+    /**
      * Handles request for category
      * 
      */
@@ -161,6 +183,11 @@ class ApisController extends Controller {
          */
         if($_GET["get"] === "filter" && isset($_GET["barangay_id"])){
             $data = ApiModel::barangay_case_category_pie_chart($_GET["barangay_id"]);
+            $this->sendResponse($data);
+        }
+
+        if($_GET["get"] === "allcategory"){
+            $data = Cases::get_all_categories_for_one_chart();
             $this->sendResponse($data);
         }
     }

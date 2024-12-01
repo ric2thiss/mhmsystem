@@ -505,97 +505,152 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
+  load_all_categories();
+
 });
 
 
 
-// var ctx = document.getElementById("myAreaChartPurok"); // Use a different canvas ID for the barangay chart
-// var myNewLineChartForPurok = new Chart(ctx, {
-//   type: 'bar',
-//   data: {
-//     labels: ["TEST"], // Use the `label` from the resolved promise
-//     datasets: [{
-//       label: "Case",
-//       lineTension: 0.3,
-//       backgroundColor: "rgba(78, 115, 223, 0.5)",
-//       borderColor: "rgba(78, 115, 223, 1)",
-//       pointRadius: 3,
-//       pointBackgroundColor: "rgba(78, 115, 223, 1)",
-//       pointBorderColor: "rgba(78, 115, 223, 1)",
-//       pointHoverRadius: 3,
-//       pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-//       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-//       pointHitRadius: 10,
-//       pointBorderWidth: 2,
-//       data: [100], // Use the `counts` from the resolved promise
-//     }],
-//   },
-//   options: {
-//     maintainAspectRatio: false,
-//     layout: {
-//       padding: {
-//         left: 10,
-//         right: 25,
-//         top: 25,
-//         bottom: 0
-//       }
-//     },
-//     scales: {
-//       xAxes: [{
-//         time: {
-//           unit: 'date'
-//         },
-//         gridLines: {
-//           display: false,
-//           drawBorder: false
-//         },
-//         ticks: {
-//           maxTicksLimit: 7
-//         }
-//       }],
-//       yAxes: [{
-//         ticks: {
-//           maxTicksLimit: 5,
-//           padding: 10,
-//           callback: function(value, index, values) {
-//             return ' Case ' + number_format(value);
-//           }
-//         },
-//         gridLines: {
-//           color: "rgb(234, 236, 244)",
-//           zeroLineColor: "rgb(234, 236, 244)",
-//           drawBorder: false,
-//           borderDash: [2],
-//           zeroLineBorderDash: [2]
-//         }
-//       }],
-//     },
-//     legend: {
-//       display: false
-//     },
-//     tooltips: {
-//       backgroundColor: "rgb(255,255,255)",
-//       bodyFontColor: "#858796",
-//       titleMarginBottom: 10,
-//       titleFontColor: '#6e707e',
-//       titleFontSize: 14,
-//       borderColor: '#dddfeb',
-//       borderWidth: 1,
-//       xPadding: 15,
-//       yPadding: 15,
-//       displayColors: false,
-//       intersect: false,
-//       mode: 'index',
-//       caretPadding: 10,
-//       callbacks: {
-//         label: function(tooltipItem, chart) {
-//           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-//           return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
-//         }
-//       }
-//     }
-//   }
-// });
+function load_all_categories() {
+  const url = "http://localhost/mental-health-management-system/api/category?get=allcategory";
+  
+  fetch(url)
+    .then(response => response.json())
+    .then(datas => {
+      const { data } = datas;
+
+      // Extract unique months and initialize category data
+      const months = [...new Set(data.map(item => item.month_name))]; // Unique month names from data
+      const mentalDisorderData = months.map(month =>
+        data.find(item => item.month_name === month && item.case_category_name === "Mental Disorder")?.case_count || 0
+      );
+      const mentalIllnessData = months.map(month =>
+        data.find(item => item.month_name === month && item.case_category_name === "Mental Illness")?.case_count || 0
+      );
+      const mentalProblemData = months.map(month =>
+        data.find(item => item.month_name === month && item.case_category_name === "Mental Problem")?.case_count || 0
+      );
+
+      // Chart Initialization
+      const ctx = document.getElementById("myNewLineChartForCategories");
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: months, // Dynamic months as labels
+          datasets: [
+            {
+              label: "Mental Illness",
+              data: mentalIllnessData,
+              lineTension: 0.3,
+              backgroundColor: "rgba(78, 115, 223, 0.2)",
+              borderColor: "rgba(78, 115, 223, 1)",
+              pointRadius: 3,
+              pointBackgroundColor: "rgba(78, 115, 223, 1)",
+              pointBorderColor: "rgba(78, 115, 223, 1)",
+              pointHoverRadius: 3,
+              pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+              pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+              pointHitRadius: 10,
+              pointBorderWidth: 2,
+            },
+            {
+              label: "Mental Problem",
+              data: mentalProblemData,
+              lineTension: 0.3,
+              backgroundColor: "rgba(54, 185, 204, 0.2)",
+              borderColor: "rgba(54, 185, 204, 1)",
+              pointRadius: 3,
+              pointBackgroundColor: "rgba(54, 185, 204, 1)",
+              pointBorderColor: "rgba(54, 185, 204, 1)",
+              pointHoverRadius: 3,
+              pointHoverBackgroundColor: "rgba(54, 185, 204, 1)",
+              pointHoverBorderColor: "rgba(54, 185, 204, 1)",
+              pointHitRadius: 10,
+              pointBorderWidth: 2,
+            },
+            {
+              label: "Mental Disorder",
+              data: mentalDisorderData,
+              lineTension: 0.3,
+              backgroundColor: "rgba(28, 200, 138, 0.2)",
+              borderColor: "rgba(28, 200, 138, 1)",
+              pointRadius: 3,
+              pointBackgroundColor: "rgba(28, 200, 138, 1)",
+              pointBorderColor: "rgba(28, 200, 138, 1)",
+              pointHoverRadius: 3,
+              pointHoverBackgroundColor: "rgba(28, 200, 138, 1)",
+              pointHoverBorderColor: "rgba(28, 200, 138, 1)",
+              pointHitRadius: 10,
+              pointBorderWidth: 2,
+            }
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: {
+            padding: {
+              left: 10,
+              right: 25,
+              top: 25,
+              bottom: 0,
+            },
+          },
+          scales: {
+            x: {
+              title: { display: true, text: "Months" },
+              grid: { display: false, drawBorder: false },
+            },
+            y: {
+              title: { display: true, text: "Case Count" },
+              ticks: {
+                padding: 10,
+                callback: function (value) {
+                  return "Cases " + value;
+                },
+              },
+              grid: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2],
+              },
+            },
+          },
+          plugins: {
+            legend: { display: true },
+            tooltip: {
+              backgroundColor: "rgb(255,255,255)",
+              bodyFontColor: "#858796",
+              titleMarginBottom: 10,
+              titleFontColor: "#6e707e",
+              titleFontSize: 14,
+              borderColor: "#dddfeb",
+              borderWidth: 1,
+              xPadding: 15,
+              yPadding: 15,
+              displayColors: false,
+              intersect: false,
+              mode: "index",
+              caretPadding: 10,
+              callbacks: {
+                label: function (tooltipItem) {
+                  const datasetLabel =
+                    tooltipItem.dataset.label || "";
+                  return datasetLabel + ": " + tooltipItem.raw;
+                },
+              },
+            },
+          },
+        },
+      });
+    })
+    .catch(error => console.error("Error fetching data:", error));
+}
+
+
+
 
 
 
