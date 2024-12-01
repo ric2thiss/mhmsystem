@@ -55,51 +55,51 @@
                                             <!-- Message -->
                                             <p class="<?php echo isset($_SESSION["statusColor"]) ? $_SESSION["statusColor"] : ''; ?> text-white">
                                                 <?php
-                                                if (isset($_SESSION["case_insertion"]) && !empty($_SESSION["case_insertion"])) {
-                                                    echo $_SESSION["case_insertion"];
+                                                if (isset($_SESSION["resource_insertion"]) && !empty($_SESSION["resource_insertion"])) {
+                                                    echo $_SESSION["resource_insertion"];
                                                     // Clear the session message after displaying it
-                                                    unset($_SESSION["case_insertion"]);
+                                                    unset($_SESSION["resource_insertion"]);
                                                 }
                                                 ?>
                                             </p>
                                         </div>
-                                        <form class="user" method="POST" action="./case">
+                                        <form class="user" method="POST" action="./resource">
                                             <label for="">Details</label>
                                             <hr>
 
                                             <!-- First name and Last name -->
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <label for="first_name">Contact Name</label>
-                                                    <input type="text" name="first_name" class="form-control form-control-user" id="first_name" placeholder="First Name" required>
+                                                    <label for="name"> Name</label>
+                                                    <input type="text" name="name" class="form-control form-control-user" id="name" placeholder="Full Name">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <label for="last_name">Contact Number</label>
-                                                    <input type="text" name="last_name" class="form-control form-control-user" id="last_name" placeholder="Last Name" required>
+                                                    <label for="contact_number">Contact Number</label>
+                                                    <input type="text" name="contact_number" class="form-control form-control-user" id="contact_number" placeholder="Contact Number">
                                                 </div>
                                             </div>
                                             
 
                                             <!-- Address -->
                                             <div class="form-group">
-                                                <label for="address">Clinic / Resource Name</label>
-                                                <input type="text" name="address" class="form-control form-control-user" id="address" placeholder="Clinic / Resource Name" required>
+                                                <label for="resource_name">Clinic / Resource Name</label>
+                                                <input type="text" name="resource_name" class="form-control form-control-user" id="resource_name" placeholder="Clinic / Resource Name">
                                             </div>
 
                                             <!-- Gender and Birthdate -->
                                             <div class="form-group row">
                                                 <div class="col-sm-6">
-                                                    <label for="birthdate">Type</label>
-                                                    <input type="text" class="form-control form-control-user" name="birthdate" id="birthdate" placeholder="Type" required>
+                                                    <label for="type">Type</label>
+                                                    <input type="text" class="form-control form-control-user" name="type" id="type" placeholder="Type">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <label for="birthdate">Address</label>
-                                                    <input type="text" class="form-control form-control-user" name="birthdate" id="birthdate" placeholder="Address" required>
+                                                    <label for="address">Address</label>
+                                                    <input type="text" class="form-control form-control-user" name="address" id="address" placeholder="Address">
                                                 </div>
                                                 
                                             </div>         
                                             <!-- Submit Button -->
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            <button type="submit" name="submit" class="btn btn-primary btn-user btn-block">
                                                 <?= ($_SESSION["role_name"] !== "Administrator" && $_SESSION["role_name"] !== "Case Manager") ? "Request Add Resource" : "Add Resource" ?>
                                             </button>
                                             <hr>

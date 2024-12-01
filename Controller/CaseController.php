@@ -9,6 +9,9 @@ require_once __DIR__ . '/../Model/ApiModel.php';
 
 class CaseController extends Controller {
     public function index() {
+        if(!isset($_SESSION["user_id"])){
+            header("Location: ./login");
+        }
         if (empty($_GET["addcase"]) || !isset($_GET["addcase"])) {
             if (isset($_GET["action"]) && $_GET["action"] === "select-barangay") {
                 $userData = User::find($_SESSION["user_id"]);

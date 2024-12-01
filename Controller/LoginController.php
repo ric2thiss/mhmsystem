@@ -9,6 +9,9 @@ require_once __DIR__ . '/../Model/User.php';
 
 class LoginController extends Controller {
     public function index() {
+        if(isset($_SESSION["user_id"])){
+            header("Location: ./");
+        }
         $title = ["title" => "Login Page"];
         return $this->render('login', ["title" => $title]);
     }
@@ -42,6 +45,13 @@ class LoginController extends Controller {
     
         // Successful login
         header('Location: ./');
+    }
+
+    public function logout(){
+        session_unset();
+        session_destroy();
+
+        header('Location: ./login');
     }
     
     

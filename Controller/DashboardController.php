@@ -8,6 +8,10 @@ require_once __DIR__ . '/../Model/ResourceModel.php';
 
 class DashboardController extends Controller {
     public function index() {
+
+        if(!isset($_SESSION["user_id"])){
+            header("Location: ./login");
+        }
         $title = ["title" => "Dashboard Page"];
         $userData = User::find($_SESSION["user_id"]);
         $data = ApiModel::case_data_table_all();

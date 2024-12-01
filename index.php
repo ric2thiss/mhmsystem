@@ -31,6 +31,9 @@ Route::get('/case', [CaseController::class, "index"]);
 Route::post('/case', [CaseController::class, "register"]);
 
 Route::get('/resource',[ResourceController::class, "index"]);
+Route::post('/resource',[ResourceController::class, "insert"]);
+
+Route::get('/logout', [LoginController::class, "logout"]);
 
 
 // Api Route
