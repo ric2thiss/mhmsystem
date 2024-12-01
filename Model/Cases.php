@@ -223,6 +223,16 @@ class Cases extends Model {
 
     }
 
+    public static function get_counts(){
+        try{
+            $sql = "SELECT COUNT(*) FROM mental_health_case";
+            $stmt = self::conn()->query($sql);
+            return $stmt->fetchColumn();
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
 
 
 
