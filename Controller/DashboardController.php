@@ -8,7 +8,6 @@ require_once __DIR__ . '/../Model/ResourceModel.php';
 
 class DashboardController extends Controller {
     public function index() {
-
         if(!isset($_SESSION["user_id"])){
             header("Location: ./login");
         }
