@@ -209,7 +209,7 @@
 
         async function fetch_purok(id) {
             try {
-                const response = await fetch(`/mental-health-management-system/api/purok?get-purok=purok&id=${id}`);
+                const response = await fetch(`/mental-health-management-system/api/purok?get-purok=all&id=${id}`);
                 if (!response.ok) {
                     throw new Error(`Error: ${response.statusText}`);
                 }
@@ -221,22 +221,20 @@
                 const purokOptions = document.getElementById("purok");
                 purokOptions.innerHTML = "";
 
-
+                // Create and append default option
                 let defaultOption = document.createElement("option");
                 defaultOption.text = "Select Purok";
                 defaultOption.value = "";
                 purokOptions.appendChild(defaultOption);
 
-    
-                if (purokData && typeof purokData === "object") {
-                    for (const key in purokData) {
-                        if (purokData.hasOwnProperty(key)) {
-                            let option = document.createElement("option");
-                            option.text = purokData.purok_name || "Unnamed Purok"; 
-                            option.value = purokData.purok_id || ""; 
-                            purokOptions.appendChild(option);
-                        }
-                    }
+                // Ensure purokData is an array before processing
+                if (Array.isArray(purokData)) {
+                    purokData.forEach((purok) => {
+                        let option = document.createElement("option");
+                        option.text = purok.purok_name || "Unnamed Purok"; // Use the actual property names
+                        option.value = purok.purok_id || ""; // Use the actual property names
+                        purokOptions.appendChild(option);
+                    });
                 } else {
                     console.error("Invalid purok data structure:", purokData);
                 }
@@ -245,6 +243,7 @@
                 alert("Failed to load purok options. Please try again later.");
             }
         }
+
 
         // Onchange of barangay the purok are being fetch base on barangay id
         barangay.addEventListener("change", ()=>{

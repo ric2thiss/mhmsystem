@@ -156,7 +156,7 @@ class ApisController extends Controller {
             return;
         }
 
-        if(isset($_GET["get-purok"]) && $_GET["get-purok"] === "purok"){
+        if(isset($_GET["get-purok"]) && $_GET["get-purok"] === "all"){
             $data = BarangayModel::show($_GET["id"]);
             $this->sendResponse($data);
         }

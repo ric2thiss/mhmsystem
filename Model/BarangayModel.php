@@ -24,7 +24,7 @@ class BarangayModel extends Model{
                                         ");
             $stmt->bindParam(':barangay_id', $_GET['id']);
             $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }catch(PDOException $e){
             error_log("Error fetching all users: " . $e->getMessage());
             return [];
