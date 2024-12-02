@@ -512,7 +512,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function load_all_categories() {
-  const url = "http://localhost/mental-health-management-system/api/category?get=allcategory";
+  const url = "/mental-health-management-system/api/category?get=allcategory";
   
   fetch(url)
     .then(response => response.json())
