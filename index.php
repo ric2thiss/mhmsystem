@@ -33,6 +33,9 @@ Route::post('/case', [CaseController::class, "register"]);
 Route::get('/resource',[ResourceController::class, "index"]);
 Route::post('/resource',[ResourceController::class, "insert"]);
 
+Route::get('/utilization',[ResourceUtilizationController::class, "index"]);
+Route::post('/utilization',[ResourceUtilizationController::class, "insert"]);
+
 Route::get('/logout', [LoginController::class, "logout"]);
 
 

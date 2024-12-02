@@ -39,7 +39,7 @@
                     </div>
 
                     <!-- Content Row -->
-                    <div class="row">
+                    <div class="row flex justify-content-center">
                          <!-- Table -->
                          <div class="col-xl-8 col-lg-7">
                             <!-- DataTales Example -->

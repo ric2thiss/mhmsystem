@@ -85,6 +85,17 @@ class CaseModel extends Model {
             return [];
         }
     }
+
+    public static function get_all(){
+        try{
+            $stmt = self::conn()->prepare("SELECT case_id, case_title FROM mental_health_case");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return [];
+        }
+    }
     
     
     
