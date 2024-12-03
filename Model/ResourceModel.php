@@ -59,4 +59,35 @@ class ResourceModel extends Model {
             return [];
         }
     }
+
+    public static function all(){
+        try{
+            $stmt = self::conn()->prepare("SELECT c.utilization_id, m.case_title, 
+                                                r.name, 
+                                                r.type, 
+                                                c.additional_description, 
+                                                MONTHNAME(c.date_used) AS month_used, 
+                                                DATE_FORMAT(c.date_used, '%d/%Y') AS day_used
+                                            FROM case_resource_utilization c
+                                            INNER JOIN resources r ON r.resource_id = c.resource_id
+                                            INNER JOIN mental_health_case m ON m.case_id = c.case_id;
+                                        ");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public static function get_utilized_resource_count(){
+        try{
+            $stmt = self::conn()->prepare("SELECT COUNT(*) FROM case_resource_utilization");
+            $stmt->execute();
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            error_log("Error: " . $e->getMessage());
+            return 0;
+        }
+    }
 }

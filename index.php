@@ -36,6 +36,8 @@ Route::post('/resource',[ResourceController::class, "insert"]);
 Route::get('/utilization',[ResourceUtilizationController::class, "index"]);
 Route::post('/utilization',[ResourceUtilizationController::class, "insert"]);
 
+Route::get('/utilization-lists',[ResourceUtilizationController::class, "showlists"]);
+
 Route::get('/logout', [LoginController::class, "logout"]);
 
 

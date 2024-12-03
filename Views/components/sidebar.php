@@ -77,26 +77,26 @@
                         <h6 class="collapse-header">Utilities:</h6>
                         <a class="collapse-item" href="./resource?action=insert-resource">Insert Resource</a>
                         <a class="collapse-item" href="./utilization">Resource Utilization</a>
-                        <a class="collapse-item" href="utilities-animation.html">Resource Lists</a>
+                        <a class="collapse-item" href="./utilization-lists">Resource Lists</a>
                         <!-- <a class="collapse-item" href="utilities-other.html">Other</a> -->
                     </div>
                 </div>
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <!-- <hr class="sidebar-divider"> -->
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <!-- <div class="sidebar-heading">
                 Other
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            Nav Item - Pages Collapse Menu
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Lists</span>
+                    <span>User Management</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -113,19 +113,19 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+            Nav Item - Charts
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Programs</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
+            Nav Item - Tables
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Barangays</span></a>
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

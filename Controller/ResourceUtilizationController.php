@@ -17,6 +17,12 @@ class ResourceUtilizationController extends Controller {
         return $this->render('resource-utilization',["userData"=>$userData, "case_datas" => $case_data,"resource_datas" => $resource_data,  "title"=>["title"=>"Utilize Resource"]]);
       
     }
+
+    public function showlists(){
+        $userData = User::find($_SESSION["user_id"]);
+        $resourceList = ResourceModel::all();
+        return $this->render('resource-lists', ["userData"=>$userData, "resourceLists" => $resourceList, "title"=>["title"=>"Utilize Resource"]]);
+    }
     
     public function insert() {
         $case_id = trim($_POST["case_id"]);

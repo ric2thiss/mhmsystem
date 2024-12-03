@@ -16,6 +16,6 @@ class DashboardController extends Controller {
         $data = ApiModel::case_data_table_all();
         $case_count = Cases::get_counts();
         $resource_count = ResourceModel::get_counts();
-        return $this->render('dashboard', ["userData" => $userData, "title" => $title, "tbDatas" => $data, "case_count" => $case_count, "resource_count"=> $resource_count]);
+        return $this->render('dashboard', ["userData" => $userData, "title" => $title, "tbDatas" => $data, "case_count" => $case_count, "resource_count"=> $resource_count, "resource_utilization_count" => ResourceModel::get_utilized_resource_count()]);
     }
 }
